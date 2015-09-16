@@ -14,3 +14,4 @@ component 'user_templates'
 component 'admin'
 
 # Component for Guest Area
+component 'guest'

@@ -1,0 +1,23 @@
+<:Title>
+  {{ Volt.current_user.name }}`s Playlist
+
+<:Body>
+  <h1>{{ Volt.current_user.name }}`s Playlist </h1>
+  <div class="panel">
+    {{ page._user_tracks.each do |result| }}
+    <div class="panel-element active" e-click="add_or_remove_track(result.spotifyID)">
+      <div class="element-content">
+        <div class="content-post">
+          <div class="post-avatar" style="background: url({{ result.imgUrl }});background-size: 80px 60px; background-repeat: no-repeat;background-position: center;">
+            <span class="check glyphicon glyphicon-ok" style="display: none;"></span>
+          </div>
+
+          <div class="post-content">
+            <span class="post-title">{{ result.name }}</span>
+            <p class="post-body">{{ result.artist }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{ end }}
+  </div>

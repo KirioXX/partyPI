@@ -4,12 +4,21 @@
 <:Body>
   <div class="container">
     <div class="header">
-      <ul class="nav nav-pills pull-right">
-        <:nav href="/">Home</:nav>
-        <:nav href="/about">About</:nav>
-        <:user_templates:menu />
-      </ul>
-      <h3 class="text-muted">partyPI</h3>
+      {{ if Volt.current_user.is_admin }}
+        <ul class="nav nav-pills pull-right">
+          <:nav href="/">Home</:nav>
+          <:nav href="/search">Suche</:nav>
+          <:user_templates:menu />
+        </ul>
+        <h3 class="text-muted">partyPI</h3>
+      {{ else }}
+        <ul class="nav nav-pills pull-right">
+          <:nav href="/playlist">Playlist</:nav>
+          <:nav href="/search">Suchen</:nav>
+          <:user_templates:menu />
+        </ul>
+        <h3 class="text-muted">partyPI</h3>
+      {{ end }}
     </div>
 
     <:volt:notices />
@@ -26,4 +35,3 @@
   <li class="{{ if active_tab? }}active{{ end }}">
     <a href="{{ attrs.href }}">{{ yield }}</a>
   </li>
-

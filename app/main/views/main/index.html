@@ -1,6 +1,5 @@
-<:Title>
-  Home
-
-<:Body>
-  <h1>Home</h1>
-
+{{ if Volt.current_user.is_admin }}
+  <:admin/>
+{{ else }}
+  <:guest/>
+{{ end }}

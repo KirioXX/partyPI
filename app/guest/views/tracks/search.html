@@ -1,0 +1,27 @@
+<:Title>
+  Suchen
+
+<:Body>
+  <form e-submit="search_tracks" role="form">
+    <:fields:text value="{{ page._searchterm }}" label="Suche" />
+  </form>
+
+  <div class="panel">
+    {{ page._search_results.each_with_index do |result,index| }}
+    <div class="panel-element {{ if in_playlist(page._search_results_arr[index].to_h['id']) }}active{{ end }}" e-click="add_or_remove_track(index)">
+
+      <div class="element-content">
+        <div class="content-post">
+          <div class="post-avatar" style="background: url({{ page._search_results_arr[index].to_h['img'] }});background-size: 80px 60px; background-repeat: no-repeat;background-position: center;">
+            <span class="check glyphicon glyphicon-ok" style="display: none;"></span>
+          </div>
+
+          <div class="post-content">
+            <span class="post-title">{{ result }}</span>
+            <p class="post-body">{{ page._search_results_arr[index].to_h['artist'] }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{ end }}
+  </div>
