@@ -4,20 +4,20 @@
 <:Body>
   <div class="container">
     <div class="header">
-      {{ if Volt.current_user.is_admin }}
+      {{ if Volt.current_user.admin }}
         <ul class="nav nav-pills pull-right">
           <:nav href="/">Home</:nav>
           <:nav href="/search">Suche</:nav>
           <:user_templates:menu />
         </ul>
-        <h3 class="text-muted">partyPI</h3>
+        <h3 class="text-muted"><img src="{{ Volt.current_user.image }}" /></h3>
       {{ else }}
         <ul class="nav nav-pills pull-right">
           <:nav href="/playlist">Playlist</:nav>
           <:nav href="/search">Suchen</:nav>
           <:user_templates:menu />
         </ul>
-        <h3 class="text-muted">partyPI</h3>
+        <h3 class="text-muted"><img src="{{ Volt.current_user.image }}" width="50px" height="50px" style="border-radius:100%"/></h3>
       {{ end }}
     </div>
 

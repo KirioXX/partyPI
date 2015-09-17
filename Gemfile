@@ -59,4 +59,8 @@ group :production do
   gem 'image_optim_pack'
 end
 
+# Ruby spotify API
 gem 'rspotify'
+
+# Facker gem for user tests
+gem 'faker'
