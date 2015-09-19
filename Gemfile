@@ -10,7 +10,7 @@ gem 'volt-mongo', '~> 0.1.0'
 gem 'volt-bootstrap', '~> 0.1.0'
 
 # Simple theme for bootstrap, remove to theme yourself.
-gem 'volt-bootstrap_jumbotron_theme', '~> 0.1.0'
+#gem 'volt-bootstrap_jumbotron_theme', '~> 0.1.0'
 
 # User templates for login, signup, and logout menu.
 gem 'volt-user_templates', '~> 0.4.0'
@@ -64,3 +64,6 @@ gem 'rspotify'
 
 # Facker gem for user tests
 gem 'faker'
+
+#Fontawesom
+gem 'volt-font_awesome', '~> 1.0.2'

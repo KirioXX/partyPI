@@ -5,7 +5,7 @@
 component 'bootstrap'
 
 # a default theme for the bootstrap framework
-component 'bootstrap_jumbotron_theme'
+#component 'bootstrap_jumbotron_theme'
 
 # provides templates for login, signup, and logout
 component 'user_templates'
@@ -15,3 +15,7 @@ component 'admin'
 
 # Component for Guest Area
 component 'guest'
+
+component 'font_awesome'
+
+disable_auto_import

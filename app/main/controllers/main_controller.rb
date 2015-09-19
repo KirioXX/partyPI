@@ -2,13 +2,21 @@
 module Main
   class MainController < Volt::ModelController
     before_action :require_login
-    
+
     def index
       # Add code for when the index view is loaded
     end
 
     def about
       # Add code for when the about view is loaded
+    end
+
+    def logout
+      Volt.logout.then do
+        redirect_to '/'
+      end.fail  do |err|
+        flash._errors << err
+      end
     end
 
     private
