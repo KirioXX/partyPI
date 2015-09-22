@@ -2,10 +2,6 @@
 
 client '/about', action: 'about'
 
-# Routes for guest Section
-client '/playlist', component: 'guest', controller: 'tracks', action: 'index'
-client '/search', component: 'guest', controller: 'tracks', action: 'search'
-
 # Routes for login and signup, provided by user_templates component gem
 client '/signup', component: 'user_templates', controller: 'signup'
 client '/login', component: 'user_templates', controller: 'login', action: 'index'
