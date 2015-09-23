@@ -2,6 +2,9 @@
 
 client '/about', action: 'about'
 
+#Routes for admin Section
+client '/users', component: 'admin', action: 'users'
+
 # Routes for guest Section
 client '/playlist', component: 'guest', controller: 'tracks', action: 'index'
 client '/search', component: 'guest', controller: 'tracks', action: 'search'

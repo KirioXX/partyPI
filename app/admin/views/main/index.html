@@ -2,4 +2,9 @@
   Component Index
 
 <:Body>
-  <h1>Component Index</h1>
+  {{ if !store.parties.first.nil? }}
+      <h4>Willst du eine neue Party starten??</h4>
+      <button type="button" class="btn btn-primary btn-lg btn-block" name="button" e-click="createParty">Neue Party</button>
+  {{ else }}
+
+  {{ end }}

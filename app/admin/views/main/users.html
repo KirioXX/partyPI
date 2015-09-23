@@ -1,0 +1,35 @@
+<:Titel>
+
+<:Body>
+  <div class="panel panel-default">
+      <div class="panel-heading">
+          Alle Nutzer
+      </div>
+      <!-- /.panel-heading -->
+      <div class="panel-body">
+          <div class="table-responsive">
+              <table class="table table-striped">
+                  <thead>
+                      <tr>
+                          <th>#</th>
+                          <th>email</th>
+                          <th>Name</th>
+                          <th>Tracks</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    {{ page._users.reverse_each do |user| }}
+                      <tr>
+                          <td>{{ user.id }}</td>
+                          <td>{{ user.email }}</td>
+                          <td>{{ user.name }}</td>
+                          <td>{{ user.tracks.all.count }}</td>
+                      </tr>
+                    {{ end }}
+                  </tbody>
+              </table>
+          </div>
+          <!-- /.table-responsive -->
+      </div>
+      <!-- /.panel-body -->
+    </div>
