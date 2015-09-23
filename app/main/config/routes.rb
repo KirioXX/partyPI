@@ -2,6 +2,7 @@
 
 client '/about', action: 'about'
 
+<<<<<<< HEAD
 #Routes for admin Section
 client '/users', component: 'admin', action: 'users'
 
@@ -9,6 +10,8 @@ client '/users', component: 'admin', action: 'users'
 client '/playlist', component: 'guest', controller: 'tracks', action: 'index'
 client '/search', component: 'guest', controller: 'tracks', action: 'search'
 
+=======
+>>>>>>> 449460dbc9069d1fe81ad8d195e2ba19a3e2fdee
 # Routes for login and signup, provided by user_templates component gem
 client '/signup', component: 'user_templates', controller: 'signup'
 client '/login', component: 'user_templates', controller: 'login', action: 'index'
