@@ -1,5 +1,7 @@
 module Guest
   class TracksController < Volt::ModelController
+    before_action :require_login
+    
     def index
       page._user_tracks = Volt.current_user.tracks.all
     end
