@@ -4,7 +4,6 @@ module Main
     before_action :require_login
 
     def index
-      # Add code for when the index view is loaded
     end
 
     def about
@@ -31,7 +30,7 @@ module Main
     # Determine if the current nav component is the active one by looking
     # at the first part of the url against the href attribute.
     def active_tab?
-      url.path.split('/')[1] == attrs.href.split('/')[1]
+      url.path.split('/')[2] == attrs.href.split('/')[2]
     end
   end
 end

@@ -1,5 +1,10 @@
-{{ if Volt.current_user.admin }}
-  <:admin/>
-{{ else }}
-  <:guest/>
-{{ end }}
+
+<:Title/>
+  Willkommen
+
+<:Body/>
+  {{ if Volt.current_user.admin }}
+    <:admin />
+  {{ else }}
+    <:guest />
+  {{ end }}

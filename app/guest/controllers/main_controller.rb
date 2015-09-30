@@ -2,11 +2,7 @@ module Guest
   class MainController < Volt::ModelController
 
     def index
-      # Add code for when the index view is loaded
-    end
 
-    def about
-      # Add code for when the about view is loaded
     end
 
     private

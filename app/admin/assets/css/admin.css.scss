@@ -1,0 +1,24 @@
+.panel.user-panel{
+  background-color: #fff;
+  margin-top: 15px;
+  padding: 0px;
+}
+audio {
+    width: 100%;
+}
+
+.inner-playlist{
+  overflow-y: hidden;
+  height: 330px;
+  overflow-x: scroll;
+
+  >div{
+    display: inline-flex;
+
+    .col-sm-4{
+      width: 240px;
+      float: none;
+    }
+  }
+
+}
