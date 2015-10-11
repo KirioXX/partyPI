@@ -67,3 +67,7 @@ gem 'faker'
 
 #Fontawesom
 gem 'volt-font_awesome', '~> 1.0.2'
+
+group :development do
+  gem 'volt-browser_irb'
+end

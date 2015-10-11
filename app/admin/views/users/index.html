@@ -1,0 +1,34 @@
+<:Title>
+  users index
+
+<:Body>
+    <table class="table">
+        <thead>
+          <th>
+            #
+          </th>
+          <th>
+            Name
+          </th>
+          <th>
+            E-Mail
+          </th>
+          <th>
+            Tracks
+          </th>
+          <th>
+            In Party?
+          </th>
+        </thead>
+        <tbody>
+          {{ page._users.each do |user| }}
+            <tr>
+              <td>{{ user.id }}</td>
+              <td>{{ user.name }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.tracks.count }}</td>
+              <td>{{ if in_party(user.id) }}<button type="button" name="button" class="btn btn-success" e-click="remove_from_party(user.id)">In Party</button>{{ else }}<button type="button" name="button" class="btn btn-default" e-click="add_to_party(user.id)">Nicht In Party</button>{{ end }}</td>
+            </tr>
+          {{ end }}
+        </tbody>
+    </table>

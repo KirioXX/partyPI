@@ -2,19 +2,21 @@
 module Main
   class MainController < Volt::ModelController
     before_action :require_login
-
-    def index
-    end
-
-    def about
-      # Add code for when the about view is loaded
-    end
+    before_action :switch_view
 
     def logout
       Volt.logout.then do
         redirect_to '/'
       end.fail  do |err|
         flash._errors << err
+      end
+    end
+
+    def switch_view
+      if Volt.current_user.admin && Volt.current_user.admin.value != nil
+        redirect_to "/admin"
+      else
+        redirect_to "/guest"
       end
     end
 

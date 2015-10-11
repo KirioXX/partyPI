@@ -2,7 +2,6 @@ module Guest
   class MainController < Volt::ModelController
 
     def index
-
     end
 
     private

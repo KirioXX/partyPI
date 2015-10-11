@@ -17,3 +17,7 @@ component 'admin'
 component 'guest'
 
 component 'font_awesome'
+
+if Volt.env.development?
+  component 'browser_irb'
+end

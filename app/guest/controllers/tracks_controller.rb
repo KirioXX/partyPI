@@ -5,7 +5,6 @@ module Guest
     end
 
     def search
-      add_to_party
     end
 
     def search_tracks
@@ -66,19 +65,6 @@ module Guest
         track_ids << track.spotifyID
       end
       return track_ids.include? id
-    end
-
-    def add_to_party
-      if !Volt.current_user.party_id.nil?
-        puts "Add to Party"
-          store.
-            _parties.first
-            ._users.append(Volt.current_user)
-            .then{ flash._notices << "Die Party kann los gehen :)" }
-            .fail{ flash._errors << "Da ist was schiefgegangen :/"}
-      else
-          puts 'In party'
-      end
     end
   end
 end
