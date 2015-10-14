@@ -34,5 +34,13 @@ module Main
     def active_tab?
       url.path.split('/')[2] == attrs.href.split('/')[2]
     end
+
+    def isAdmin?
+      if Volt.current_user.admin && Volt.current_user.admin != nil
+        return true
+      else
+        return false
+      end
+    end
   end
 end
