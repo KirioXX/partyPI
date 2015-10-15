@@ -2,17 +2,22 @@ module Admin
   class MainController < Volt::ModelController
     before_action :admin_only
 
+    @partyCount = 0
+
     def index
-      partyCount = 0
 
       store.parties.all.count.then do |res|
-        partyCount = res
+        @partyCount = res
       end
 
-      if partyCount > 0
-        page._party_exist = false
-      else
-        page._party_exist = true
+      if @partyCount > 0
+        store.parties.first.tracks.first.then do |track|
+          page._track = track.url
+          page._track_name = track.name
+          page._track_album = track.album
+          page._track_artist = track.artist
+          page._track_image = track.imgUrl
+        end
       end
 
       page._party_tracks = store._parties.first._tracks.all
@@ -58,7 +63,6 @@ module Admin
                 .then do |res|
                   store.parties.first.tracks.append(res)
                 end.fail{ flash._errors << "Da ist irgendet was schiefgegangen :/" }
-              Volt.logger.info(track.name)
             end
             i += 1
           end
@@ -69,7 +73,6 @@ module Admin
     def next_track
       store.parties.first.tracks.first.destroy
       store.parties.first.tracks.first.then do |track|
-        Volt.logger.info('next_track')
         page._track = track.url
         page._track_name = track.name
         page._track_album = track.album
@@ -77,6 +80,7 @@ module Admin
         page._track_image = track.imgUrl
       end
       `$(#{first_element}).find('#player').load();`
+      `$(#{first_element}).find('#player').play();`
     end
 
     def newParty
@@ -93,23 +97,17 @@ module Admin
     end
 
     def index_ready
+      if @partyCount > 0
+        page._party_exist = false
+      else
+        page._party_exist = true
+      end
+
       `$(#{first_element}).find('.player').on('ended', function() {`
           next_track
         `});`
 
-        if page._track == nil
-          store.parties.first.tracks.first.then do |track|
-            page._track = track.url
-            page._track_name = track.name
-            page._track_album = track.album
-            page._track_artist = track.artist
-            page._track_image = track.imgUrl
-          end
-          `$(#{first_element}).find('#player').load();`
-        else
-          `$(#{first_element}).find('#player').load();`
-        end
-        loadPlayer
+      `$(#{first_element}).find('#player').load();`
     end
 
     private

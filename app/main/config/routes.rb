@@ -6,7 +6,6 @@ client '/admin/users', component: 'admin', controller: 'users', action: 'index'
 
 # Routes for guest Section
 client '/guest', component: 'guest', controller:'tracks', action: 'index'
-client '/guest/playlist', component: 'guest', controller: 'tracks', action: 'index'
 client '/guest/search', component: 'guest', controller: 'tracks', action: 'search'
 
 # Routes for login and signup, provided by user_templates component gem

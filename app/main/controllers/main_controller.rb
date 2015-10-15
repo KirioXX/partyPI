@@ -4,16 +4,10 @@ module Main
     before_action :require_login
     before_action :switch_view
 
-    def logout
-      Volt.logout.then do
-        redirect_to '/'
-      end.fail  do |err|
-        flash._errors << err
-      end
-    end
-
     def switch_view
-      if Volt.current_user.admin && Volt.current_user.admin.value != nil
+      if !Volt.current_user
+        redirect_to "/login"
+      elsif isAdmin
         redirect_to "/admin"
       else
         redirect_to "/guest"
@@ -35,8 +29,8 @@ module Main
       url.path.split('/')[2] == attrs.href.split('/')[2]
     end
 
-    def isAdmin?
-      if Volt.current_user.admin && Volt.current_user.admin != nil
+    def isAdmin
+      if Volt.current_user.admin.value && Volt.current_user.admin != nil
         return true
       else
         return false
