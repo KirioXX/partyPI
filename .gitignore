@@ -7,4 +7,3 @@ tmp
 .sass-cache
 .DS_Store
 compiled
-Gemfile.lock
