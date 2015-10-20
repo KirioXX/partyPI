@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby "2.1.5"
 
-gem 'volt'
+gem 'volt', '~> 0.9.6'
 
 # volt uses mongo as the default data store.
 gem 'volt-mongo', '~> 0.1.0'
