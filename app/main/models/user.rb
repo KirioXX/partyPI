@@ -8,7 +8,6 @@ class User < Volt::User
   field login_field
   field :name
   field :admin
-  field :image
 
   validate login_field, unique: true, length: 8
   validate :email, email: true

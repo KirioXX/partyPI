@@ -1,5 +1,6 @@
 module Admin
   class MainController < Volt::ModelController
+    before_action :require_login
     before_action :admin_only
 
     @partyCount = 0
@@ -116,7 +117,6 @@ module Admin
     def admin_only
       if !Volt.current_user.admin
         redirect_to '/login'
-        stop_chain
       end
     end
   end

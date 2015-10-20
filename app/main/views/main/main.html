@@ -3,7 +3,7 @@
 
 <:Body>
       <div class="container">
-      {{ if isAdmin }}
+      {{ if page._isAdmin }}
           <div class="header">
             <ul class="nav nav-pills pull-right">
               <:nav href="/admin">Home</:nav>
@@ -12,7 +12,7 @@
             </ul>
             <h3 class="text-muted">Admin</h3>
           </div>
-      {{ else }}
+      {{ elsif Volt.current_user }}
           <div class="header">
             <ul class="nav nav-pills pull-right">
               <:nav href="/guest/search"><i class="fa fa-search"></i> Search</:nav>

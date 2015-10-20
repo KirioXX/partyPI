@@ -2,9 +2,9 @@
 module Main
   class MainController < Volt::ModelController
     before_action :require_login
-    before_action :switch_view
+    before_action :switchView
 
-    def switch_view
+    def switchView
       if !Volt.current_user
         redirect_to "/login"
       elsif isAdmin
@@ -31,8 +31,10 @@ module Main
 
     def isAdmin
       if Volt.current_user.admin.value && Volt.current_user.admin != nil
+        page._isAdmin = true
         return true
       else
+        page._isAdmin = false
         return false
       end
     end
