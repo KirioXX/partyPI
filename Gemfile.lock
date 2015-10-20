@@ -218,7 +218,7 @@ DEPENDENCIES
   selenium-webdriver (~> 2.47.1)
   thin (~> 1.6.0)
   uglifier (>= 2.4.0)
-  volt
+  volt (~> 0.9.6)
   volt-bootstrap (~> 0.1.0)
   volt-bootstrap_jumbotron_theme (~> 0.1.0)
   volt-browser_irb
