@@ -1,4 +1,5 @@
 # See https://github.com/voltrb/volt#routes for more info on routes
+client '/', action: 'switchView'
 
 # Routes for admin Section
 client '/admin', component: 'admin', action: 'index'
