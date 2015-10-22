@@ -1,0 +1,93 @@
+<:Title>
+  Admin Dashboard
+
+<:Body>
+    {{ if page._party_exist }}
+      <div class="row bottom-buffer">
+        <div class="col-md-12">
+          <h4>Es existiert noch keine Party jetzt eine erzeugen?</h4>
+          <button type="button" class="btn btn-primary btn-lg btn-block" e-click="newParty">Neue Party</button>
+        </div>
+      </div>
+    {{ end }}
+    <div class="row">
+      <div class="col-md-6 pull-left">
+        <img src="{{ page._track_image }}" alt="Album Bild" width="250px" />
+      </div>
+      <div class="col-md-6 pull-left">
+        <ul class="list-group">
+          <li class="list-group-item"><h2>{{ page._track_name }}</h2></li>
+          <li class="list-group-item">Album: {{ page._track_album }}</li>
+          <li class="list-group-item">Künstler: {{ page._track_artist }}</li>
+        </ul>
+      </div>
+      <div class="col-md-12">
+        <audio class="player" id="player" preload="auto" controls>
+            <source src="{{ page._track }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+      </div>
+    </div>
+    <div class="row">
+      <h3>Die nächsten Titel</h3>
+      <button type="button" name="button" e-click="add_track_to_party">Add Track</button>
+      <div class="inner-playlist">
+        <div>
+            {{ page._party_tracks.each do |track| }}
+              <div class="col-sm-4">
+                <div class="thumbnail">
+                  <img src="{{ track.imgUrl }}">
+                  <div class="caption">
+                    <h5>{{ track.name }} - {{ track.artist }}</h5>
+                    <p>User<span style="float:right">{{ Time.at(track.length/1000).strftime("%H:%M:%S") }}</span></p>
+                  </div>
+                </div>
+              </div>
+            {{ end }}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <h3>Partygäste</h3>
+          {{ page._party_guests.each do |guest| }}
+            <div class="panel panel-default user-panel" style="">
+              <!-- Default panel contents -->
+              <div class="panel-heading">
+                {{guest.name}}
+                <span class="pull-right">{{ guest.tracks.count }} Tracks</span>
+              </div>
+
+                <!-- Table -->
+                <table class="table">
+                    <thead>
+                      <th>
+                        Bild
+                      </th>
+                      <th>
+                        Titel
+                      </th>
+                      <th>
+                        Album
+                      </th>
+                      <th>
+                        Künstler
+                      </th>
+                      <th>
+                        Länge
+                      </th>
+                    </thead>
+                    <tbody>
+                      {{ guest.tracks.reverse_each do |track| }}
+                        <tr>
+                          <td><img src="{{ track.imgUrl }}" width="60px"/></td>
+                          <td>{{ track.name }}</td>
+                          <td>{{ track.album }}</td>
+                          <td>{{ track.artist }}</td>
+                          <td>{{  Time.at(track.length/1000).strftime("%H:%M:%S") }}</td>
+                        </tr>
+                      {{ end }}
+                    </tbody>
+                </table>
+            </div>
+          {{ end }}
+    </div>

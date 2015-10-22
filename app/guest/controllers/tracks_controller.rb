@@ -45,7 +45,7 @@ module Guest
 
     def add_track(track)
       store
-        ._tracks
+        .tracks
         .create(spotifyID: track['id'],name: track['name'],length: track['length'],artist: track['artist'],album: track['album'],imgUrl: track['img'],url: track['url'])
         .then{ flash._successes << "Yay, ein neuer Track!! :3"}
         .fail{ flash._errors << "Da ist irgendet was schiefgegangen :/" }
@@ -53,7 +53,7 @@ module Guest
 
     def remove_track(id)
       store
-        ._tracks
+        .tracks
         .where(spotifyID: id)
         .first.destroy
         .then{ flash._successes << "Der Track wurde von deiner Liste entfernt!"}
