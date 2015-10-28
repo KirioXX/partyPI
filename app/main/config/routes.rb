@@ -1,8 +1,9 @@
 # See https://github.com/voltrb/volt#routes for more info on routes
 
 # Routes for admin Section
-client '/admin', component: 'admin', action: 'index'
+client '/admin', component: 'admin', view: 'index'
 client '/admin/users', component: 'admin', controller: 'users', action: 'index'
+get '/admin/party/new', component: 'admin', controller: 'parties', action: 'new'
 
 # Routes for guest Section
 client '/guest', component: 'guest', controller:'tracks', action: 'index'
