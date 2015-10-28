@@ -2,10 +2,10 @@ module Admin
   class MainController < Volt::ModelController
     before_action :require_login
     before_action :admin_only
-    before_action :party_exist
 
     def index
       self.model = store.parties.first
+      party_exist
     end
 
     def party_tracks
@@ -25,9 +25,6 @@ module Admin
     end
 
     def index_ready
-      page._party_tracks = self.model.tracks.all
-      page._party_guests = self.model.users.all
-
       `$(#{first_element}).find('.player').on('ended', function() {`
           next_track
       `});`
@@ -35,22 +32,26 @@ module Admin
       `startPlayer(false);`
     end
 
-    def add_track_to_party
-      self.model.tracks.all.size.then do |tracks_cou|
+    def add_track_to_party(load)
+      store.parties.first.tracks.all.size.then do |tracks_cou|
         if tracks_cou < 11
           user_id = get_random_user_id
           get_random_track_and_add(user_id)
         end
       end
+      if load
+        `startPlayer(false)`
+      end
     end
 
     def get_random_track_and_add(user_id)
-      page._party_guests.value.where(id: user_id).first.then do |user|
+      party_guests.where(id: user_id).first.then do |user|
         user.tracks.all.then do |tracks|
           r = (0..(tracks.length.value-1)).to_a.sample
           i = 0
           tracks.each do |track|
             if i == r
+
               store
                 .tracks
                 .create(spotifyID: track.spotifyID,name: track.name,length: track.length,artist: track.artist,album: track.album,imgUrl: track.imgUrl,url: track.url)
@@ -65,7 +66,7 @@ module Admin
     end
 
     def next_track
-      self.model.tracks.first.destroy
+      store.parties.first.tracks.first.destroy
       `startPlayer(true);`
       add_track_to_party
     end
