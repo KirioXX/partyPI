@@ -58,7 +58,7 @@ module Admin
                 .create(spotifyID: track.spotifyID,name: track.name,length: track.length,artist: track.artist,album: track.album,imgUrl: track.imgUrl,url: track.url)
                 .then do |res|
                   store.parties.first.tracks.append(res)
-                end.fail{ flash._errors << "Da ist irgendet was schiefgegangen :/" }
+                end.fail{ flash._errors << "There went somthing wrong :/" }
             end
             i += 1
           end

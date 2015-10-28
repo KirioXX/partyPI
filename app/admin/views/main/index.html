@@ -10,7 +10,7 @@
         <ul class="list-group">
           <li class="list-group-item"><h2>{{ current_track.name }}</h2></li>
           <li class="list-group-item">Album: {{ current_track.album }}</li>
-          <li class="list-group-item">Künstler: {{ current_track.artist }}</li>
+          <li class="list-group-item">Artist: {{ current_track.artist }}</li>
         </ul>
       </div>
       <div class="col-md-12">
@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="row">
-      <h3>Die nächsten Titel</h3>
+      <h3>Next Tracks</h3>
       <button type="button" name="button" e-click="add_track_to_party">Add Track</button>
       <div class="inner-playlist">
         <div>
@@ -40,32 +40,32 @@
       </div>
     </div>
     <div class="row">
-        <h3>Partygäste</h3>
+        <h3>Party guests</h3>
           {{ party_guests.each do |guest| }}
             <div class="panel panel-default user-panel" style="">
               <!-- Default panel contents -->
               <div class="panel-heading">
                 {{guest.name}}
-                <span class="pull-right">{{ guest.tracks.count }} Tracks</span>
+                <span class="pull-right">{{ guest.tracks.all.count }} Tracks</span>
               </div>
 
                 <!-- Table -->
                 <table class="table">
                     <thead>
                       <th>
-                        Bild
+                        Image
                       </th>
                       <th>
-                        Titel
+                        Title
                       </th>
                       <th>
                         Album
                       </th>
                       <th>
-                        Künstler
+                        Artist
                       </th>
                       <th>
-                        Länge
+                        Length
                       </th>
                     </thead>
                     <tbody>

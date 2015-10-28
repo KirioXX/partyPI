@@ -26,7 +26,7 @@ module Guest
           end
           page._search_results = items
       end.fail do |error|
-          flash._errors << "Es wurde leider kein Titel für deine Anfrage gefunden. Versuch es doch noch einmal."
+          flash._errors << "There is no title for your search. Try another one."
       end
     end
 
@@ -47,8 +47,8 @@ module Guest
       store
         .tracks
         .create(spotifyID: track['id'],name: track['name'],length: track['length'],artist: track['artist'],album: track['album'],imgUrl: track['img'],url: track['url'])
-        .then{ flash._successes << "Yay, ein neuer Track!! :3"}
-        .fail{ flash._errors << "Da ist irgendet was schiefgegangen :/" }
+        .then{ flash._successes << "Yay, a new Track!! :3"}
+        .fail{ flash._errors << "There went somthing wrong :/" }
     end
 
     def remove_track(id)
@@ -56,8 +56,8 @@ module Guest
         .tracks
         .where(spotifyID: id)
         .first.destroy
-        .then{ flash._successes << "Der Track wurde von deiner Liste entfernt!"}
-        .fail{ flash._errors << "Da ist irgendet was schiefgegangen :/" }
+        .then{ flash._successes << "Removed track from your list!"}
+        .fail{ flash._errors << "There went somthing wrong :/" }
     end
 
     def in_playlist(id)
