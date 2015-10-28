@@ -3,7 +3,7 @@
 # Routes for admin Section
 client '/admin', component: 'admin', view: 'index'
 client '/admin/users', component: 'admin', controller: 'users', action: 'index'
-get '/admin/party/new', component: 'admin', controller: 'parties', action: 'new'
+client '/admin/party/new', component: 'admin', controller: 'parties', action: 'new'
 
 # Routes for guest Section
 client '/guest', component: 'guest', controller:'tracks', action: 'index'

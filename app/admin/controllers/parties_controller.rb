@@ -4,8 +4,6 @@ module Admin
     def new
     end
 
-    private
-    
     def newParty
       store
         .parties

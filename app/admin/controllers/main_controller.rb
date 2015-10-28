@@ -2,12 +2,10 @@ module Admin
   class MainController < Volt::ModelController
     before_action :require_login
     before_action :admin_only
+    before_action :party_exist
 
     def index
       self.model = store.parties.first
-      if self.model != nil
-        redirect_to '/admin/party/new'
-      end
     end
 
     def party_tracks
@@ -97,6 +95,12 @@ module Admin
     def admin_only
       if !Volt.current_user.admin
         redirect_to '/login'
+      end
+    end
+
+    def party_exist
+      if store.parties.first.value == nil
+        redirect_to '/admin/party/new'
       end
     end
   end
