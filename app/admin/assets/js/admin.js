@@ -5,5 +5,5 @@ function startPlayer(start){
     if(start){
       audio[0].play();
     }
-  },2000);
+  },2500);
 }

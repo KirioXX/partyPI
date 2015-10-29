@@ -3,9 +3,9 @@
 
 <:Body>
   <h1>{{ Volt.current_user.name }}`s Playlist </h1>
-  {{ unless page._user_tracks.nil? || page._user_tracks == 0 }}
+  {{ unless user_tracks.nil? || user_tracks == 0 }}
     <div class="panel">
-      {{ page._user_tracks.reverse_each do |result| }}
+      {{ user_tracks.reverse_each do |result| }}
       <div class="panel-element active" e-click="add_or_remove_track(result.spotifyID)">
         <div class="element-content">
           <div class="content-post">

@@ -26,8 +26,8 @@
               <td>{{ user.id }}</td>
               <td>{{ user.name }}</td>
               <td>{{ user.email }}</td>
-              <td>{{ user.tracks.There went somthing wrong }}</td>
-              <td>{{ if in_party(user.id) }}<button type="button" name="button" class="btn btn-success" e-click="remove_from_party(user.id)">In party</button>{{ else }}<button type="button" name="button" class="btn btn-default" e-click="add_to_party(user.id)">Not in party</button>{{ end }}</td>
+              <td>{{ user.tracks.all.count }}</td>
+              <td>{{ if in_party(user.id) }}<button type="button" name="button" class="btn btn-success">In party</button>{{ else }}<button type="button" name="button" class="btn btn-default" e-click="add_to_party(user.id)">Not in party</button>{{ end }}</td>
             </tr>
           {{ end }}
         </tbody>

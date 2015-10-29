@@ -5,7 +5,6 @@ module Admin
 
     def index
       self.model = store.parties.first
-      party_exist
     end
 
     def party_tracks
@@ -25,6 +24,7 @@ module Admin
     end
 
     def index_ready
+      party_exist
       `$(#{first_element}).find('.player').on('ended', function() {`
           next_track
       `});`
@@ -32,15 +32,12 @@ module Admin
       `startPlayer(false);`
     end
 
-    def add_track_to_party(load)
+    def add_track_to_party
       store.parties.first.tracks.all.size.then do |tracks_cou|
         if tracks_cou < 11
           user_id = get_random_user_id
           get_random_track_and_add(user_id)
         end
-      end
-      if load
-        `startPlayer(false)`
       end
     end
 

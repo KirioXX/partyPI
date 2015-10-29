@@ -9,16 +9,10 @@ module Admin
 
     def add_to_party(user_id)
       store.users.where(id: user_id).first.then do |user|
-        store.parties.first.users.append(user).then do |res|
-          puts "user added"
-        end
+        store.parties.first.users.append(user)
       end.fail do |err|
         puts err
       end
-    end
-
-    def remove_from_party(user_id)
-      puts "remove_from_party"
     end
 
     private

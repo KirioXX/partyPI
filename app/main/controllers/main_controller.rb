@@ -4,6 +4,9 @@ module Main
     before_action :require_login
     before_action :switchView
 
+    def index
+    end
+
     def switchView
       if !Volt.current_user
         redirect_to "/login"
